@@ -1,12 +1,5 @@
 # Test Design
 
-
-### Test Name and Number
-
-#### Brief Description and Objective
-
-This test suite evaluates the functionality of the CheckSum class, which is responsible for calculating checksums for messages. The checksum calculation employs a double checksum algorithm, which involves splitting the message into blocks, calculating checksums for each block, and then combining them to generate a final checksum. The objective is to ensure that the CheckSum class performs accurately under various scenarios and handles different inputs appropriately.
-
 ---
 
 #### Positive test: Checksum calculation for a valid message
