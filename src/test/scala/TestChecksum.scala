@@ -2,12 +2,10 @@ import munit.*
 import ModelCheckSum.CheckSum
 
 class TestChecksum extends FunSuite  {
-
-
   
   test("Positive Test 1: Checksum for 'Hello'") {
     val message = List[Byte](72, 101, 108, 108, 111) // Corresponding to ASCII values of 'Hello'
-    val expectedChecksum: Byte = 3 // Manually calculated expected checksum
+    val expectedChecksum: Byte = 3 // Manually calculclated expected checksum
     assert(CheckSum().singleMessageDoubleChecksum(message, 256, 8, 3), expectedChecksum)
   }
 

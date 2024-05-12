@@ -1,10 +1,13 @@
 package ModelCheckSum
 
+import scala.annotation.tailrec
+
 class CheckSum  extends IChecksum{
   def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
 
     val dataBlocks = createBlocks(message, blockSize)
 
+    @tailrec
     def singleMessageBlockCheckSum(dataBlocks: List[List[Byte]], modulus: Int, k: Int, sumA: Byte, sumB: Byte): Byte = {
 
       dataBlocks match {
