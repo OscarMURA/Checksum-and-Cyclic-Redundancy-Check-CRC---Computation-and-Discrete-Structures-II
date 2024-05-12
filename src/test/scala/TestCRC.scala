@@ -133,7 +133,7 @@ class TestCRC extends FunSuite {
   }
 
   test("getMessageDifferentInputs") {
-    val result = CRC().getMessage("1110010101", "1101", "110")
+      val result = CRC().getMessage("1110010101", "1101", "110")
     assertEquals(result, "1110010101")
   }
 

@@ -1,3 +1,4 @@
+
 # Test Design
   
 ---  
@@ -246,6 +247,57 @@ val message2 = "1111111"
 **Output**
 ```scala  
 val expectedOutput: String = "0000000"  
+
+```  
+---
+
+#### GetMessage 1
+
+This test case verifies whether the `getMessage` function returns the same input message when provided with specific polynomial and divisor values.
+
+**Input**
+```scala  
+val message = "11010011101100"
+val polinomio = "1011"
+val remainder = "100"
+```  
+**Output**
+```scala  
+val expectedOutput: String = "11010011101100"  
+
+```  
+---
+
+#### GetMessage 2
+
+This test case also verifies whether the `getMessage` function returns the same input message but with different message, polynomial, and divisor values.
+
+**Input**
+```scala  
+val message = "1110010101"
+val polinomio = "1101"
+val remainder = "110"
+```  
+**Output**
+```scala  
+val expectedOutput: String = "1110010101"  
+
+```  
+---
+
+#### GetMessage 3
+
+This test case checks whether the `getMessage` function properly handles a situation where the remainder of the CRC calculation doesn't match the expected value.
+
+**Input**
+```scala  
+val message = "1110010101"
+val polinomio = "1101"
+val remainder = "111"
+```  
+**Output**
+```scala  
+val expectedOutput: String = "1110010101"  
 
 ```  
 ---
