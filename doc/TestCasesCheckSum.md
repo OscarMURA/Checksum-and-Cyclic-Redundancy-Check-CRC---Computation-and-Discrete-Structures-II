@@ -185,15 +185,6 @@ val k = 8
 val blockSize = 10
 ```
 
-
-### Test Name and Number
-
-#### Brief Description and Objective
-
-This test suite evaluates the functionality of the CheckSum class, focusing on the chunckData and createBlocks methods. These methods are responsible for chunking the input data into blocks based on a specified block size. The objective is to ensure that both methods accurately chunk the data and create blocks according to the provided block size.
-
----
-
 #### Positive Test 1: Chunck data with blockSize 2
 
 This test verifies the correctness of the data chunking process when the blockSize is set to 2. The input data [1, 2, 3, 4, 5, 6] is chunked into blocks of size 2, and the sum of consecutive elements within each block is computed. The expected chunked data is compared with the actual chunked data obtained from the chunckData method of the CheckSum class.
