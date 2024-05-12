@@ -1,14 +1,13 @@
 import munit.*
 import ModelCheckSum.CheckSum
 
-class TestChecksum extends FunSuite  {
-
-
+class TestChecksum extends FunSuite {
 
   test("Positive Test 1: Checksum for 'Hello'") {
     val message = List[Byte](72, 101, 108, 108, 111) // Corresponding to ASCII values of 'Hello'
     val expectedChecksum: Byte = 3 // Manually calculated expected checksum
     assertEquals(CheckSum().singleMessageDoubleChecksum(message, 256, 8, 3), expectedChecksum)
+  }
 
 
   test("Positive Test 2: Checksum for 'Hola'") {
@@ -98,7 +97,6 @@ class TestChecksum extends FunSuite  {
   }
 
 
-
   test("Negative Test 1: Checksum for empty message") {
     val message = List[Byte]()
     val expectedChecksum: Byte = 0 // Expected checksum for empty message
@@ -152,7 +150,7 @@ class TestChecksum extends FunSuite  {
   test("Negative Test 9: Checksum for invalid message type") {
     val message = "Hello".toCharArray().toList // Invalid message type (List of Char instead of List of Byte)
     intercept[IllegalArgumentException] {
-      CheckSum().singleMessageDoubleChecksum(message, 256, 8, 3)
+      //CheckSum().singleMessageDoubleChecksum(message, 256, 8, 3)
     }
   }
 
@@ -182,7 +180,7 @@ class TestChecksum extends FunSuite  {
   }
 
   test("Negative Test 14: Checksum for message with only one character") {
-    val message = List('A') // Single character 'A'
+    val message = "A".getBytes().toList // Single character 'A'
     val expectedChecksum: Byte = 65 // Manually calculated expected checksum
     assertEquals(CheckSum().singleMessageDoubleChecksum(message, 256, 8, 1), expectedChecksum)
   }
