@@ -333,10 +333,5 @@ val blockSize = 5
 
 **Output**
 ```scala
-val expectedBlocks = List(List[Byte](1, 2, 3)) // Entire data in one block
-```
-
-**Output**
-```scala
 Intercepts IllegalArgumentException
 ```
