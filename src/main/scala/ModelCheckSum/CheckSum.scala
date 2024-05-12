@@ -4,7 +4,9 @@ import scala.annotation.tailrec
 
 class CheckSum  extends IChecksum{
   def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
-
+    if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
+    if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
+    if(blockSize>message.length)throw new IllegalArgumentException("Block Size Partition must be less than the message lenght")
     val dataBlocks = createBlocks(message, blockSize)
 
     @tailrec
