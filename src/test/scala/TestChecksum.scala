@@ -9,7 +9,7 @@ class TestChecksum extends FunSuite  {
     val message = List[Byte](72, 101, 108, 108, 111) // Corresponding to ASCII values of 'Hello'
     val expectedChecksum: Byte = 3 // Manually calculated expected checksum
     assertEquals(CheckSum().singleMessageDoubleChecksum(message, 256, 8, 3), expectedChecksum)
-  }
+
 
   test("Positive Test 2: Checksum for 'Hola'") {
     val message = "Hola".getBytes().toList
@@ -182,8 +182,7 @@ class TestChecksum extends FunSuite  {
   }
 
   test("Negative Test 14: Checksum for message with only one character") {
-    val message = List('A
-    +') // Single character 'A'
+    val message = List('A') // Single character 'A'
     val expectedChecksum: Byte = 65 // Manually calculated expected checksum
     assertEquals(CheckSum().singleMessageDoubleChecksum(message, 256, 8, 1), expectedChecksum)
   }
