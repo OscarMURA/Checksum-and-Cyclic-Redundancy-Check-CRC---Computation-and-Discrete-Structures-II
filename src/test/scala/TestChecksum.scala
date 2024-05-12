@@ -170,5 +170,4 @@ class TestChecksum extends FunSuite {
     assertEquals(CheckSum().createBlocks(data, blockSize), expectedBlocks)
   }
 
-
 }

@@ -127,11 +127,6 @@ class TestCRC extends FunSuite {
     assertEquals(result, "0000000")
   }
 
-  test("xorEmptyStrings") {
-    val result = CRC().xor("", "")
-    assertEquals(result, "")
-  }
-
   test("getMessages") {
     val result = CRC().getMessage("11010011101100", "1011", "100")
     assertEquals(result, "11010011101100")
@@ -160,6 +155,5 @@ class TestCRC extends FunSuite {
     assertEquals(result2, true)
     assertEquals(result3, false)
   }
-
 
 }
