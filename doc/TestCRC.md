@@ -1,7 +1,201 @@
 
 # Test Design
   
+---
+
+#### Normal Case Residue 1
+
+This test verifies the correctness of the residue algorithm in a normal case.
+
+**Input**
+```scala  
+val dividend = "1110010101"  
+val polynomial = "1101"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = "110"  
+```  
+  
 ---  
+
+#### Normal Case Residue 2
+
+This test verifies the correctness of the residue algorithm in a normal case, this time with more bits.
+
+**Input**
+```scala  
+val dividend = "11010011101100"  
+ val polynomial = "1011"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = "100"  
+```  
+---  
+
+#### Residue Larger Inputs
+
+This test verifies the correctness of the residue algorithm, this time with more bits in the inputs.
+
+**Input**
+```scala  
+val dividend = "1110010101010101010101010101"  
+ val polynomial = "11011111"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = "0010101"  
+```  
+  
+---  
+
+#### Residue 16 Bits Polynomial
+
+This test verifies the correctness of the residue algorithm, this time with a 16 bits polynomial.
+
+**Input**
+```scala  
+val dividend = "1110010101010101"  
+val polynomial = "1101111100000111"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = "011111011111111"  
+```  
+  
+---  
+
+#### Residue 32 Bits Polynomial
+
+This test verifies the correctness of the residue algorithm, this time with a 32 bits polynomial.
+
+**Input**
+```scala  
+val dividend = "1110010101010101010101010101"  
+val polynomial = "11011111000000011110000011111111"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = "0001011010001111111111100011101"  
+```  
+---  
+
+#### Residue Non Zero Remainder
+
+This test verifies the correctness of the residue algorithm, this time with a non-zero remainder.
+
+**Input**
+```scala  
+val dividend = "1110010101"  
+val polynomial = "1101"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: String = ""  
+```  
+---  
+
+#### Verify message no errors
+
+This test verifies the correctness of the verify message algorithm no errors.
+
+**Input**
+```scala  
+val dividend = "11010011101100"  
+val polynomial = "1011"  
+val remainder = "100"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: Boolean = true  
+```  
+---  
+
+#### Verify message no errors 2
+
+This test verifies the correctness of the verify message algorithm no errors. this time with different inputs.
+
+**Input**
+```scala  
+val dividend = "1110010101"  
+val polynomial = "1101"  
+val remainder = "110"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: Boolean = true  
+``` 
+---   
+#### Verify message with errors  
+  
+This test verifies the correctness of the verify message algorithm with errors.  
+  
+**Input**  
+```scala
+val dividend = "1110010101"  
+val polynomial = "1101"  
+val remainder = "001"
+```  
+
+**Output**
+```scala  
+val expectedOutput: Boolean = false  
+```
+---   
+#### Verify message empty message  
+  
+This test verifies the correctness of the verify message algorithm with an empty message.  
+  
+**Input**  
+```scala  
+val dividend = ""  
+val polynomial = "1101"  
+val remainder = "000"  
+```  
+
+**Output**
+```scala  
+val expectedOutput: Boolean = true  
+``` 
+---   
+#### Verify message different combinations  
+  
+This test verifies the correctness of the verify message algorithm with different combinations of inputs.  
+  
+**Input**  
+```scala  
+val dividend1 = "110101"  
+val polynomial1 = "1011"  
+val remainder1 = "000"  
+  
+val dividend2 = "1110010101"  
+val polynomial2 = "1101"  
+val remainder2 = "110"  
+  
+val dividend3 = "1010101010"  
+val polynomial3 = "10011"  
+val remainder3 = "0000"  
+```  
+
+**Output**
+```scala  
+val expectedOutput1: Boolean = false  
+  
+val expectedOutput2: Boolean = true  
+  
+val expectedOutput2: Boolean = false  
+  
+```
+---
 
 #### Normal case XOR 1
 
