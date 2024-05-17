@@ -1,7 +1,14 @@
+import Generator.{DataGenerator, DataType}
+import Generator.ReportTI
+
+
 @main
 def main(): Unit = {
-  println("Hello world!")
+  println("Generando archivos de datos...")
+
+  ReportTI.createUnitData(DataType.TOY, 25)
+  println("Archivo de datos TOY generado.")
+  println(DataType.TOY)
+
+  println("Proceso completado.")
 }
-
-
-

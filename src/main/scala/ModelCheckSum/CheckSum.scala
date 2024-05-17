@@ -2,9 +2,22 @@ package ModelCheckSum
 
 import scala.annotation.tailrec
 
-class CheckSum  extends IChecksum{
-  def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
 
+class CheckSum  extends IChecksum{
+
+  private var now: Long =0
+  private var end: Long =0
+  
+  def calculateCheckum(data: List[Byte]): Unit = {
+    star()
+    val checksum = singleMessageDoubleChecksum(data, 256, 8, 1)
+    stop()
+  }
+  
+  def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
+    if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
+    if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
+    if(blockSize>message.length)throw new IllegalArgumentException("Block Size Partition must be less than the message lenght")
     val dataBlocks = createBlocks(message, blockSize)
 
     @tailrec
@@ -60,4 +73,9 @@ class CheckSum  extends IChecksum{
   def concatenateSingleByte(data: List[List[Byte]]): List[Byte] = {
     data.map(_.sum.toByte)
   }
+
+  def star(): Unit= now = System.currentTimeMillis()
+  def stop(): Unit = end = System.currentTimeMillis()
+  def getTime(): Long = end - now
+
 }
