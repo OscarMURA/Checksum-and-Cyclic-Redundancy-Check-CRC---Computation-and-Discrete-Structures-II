@@ -1,6 +1,29 @@
 package ModelCRC
 
 class CRC extends ICRC{
+
+  def normalStringToByteString(normalString: String): String = {
+    @scala.annotation.tailrec
+    def convert(bytes: Array[Byte], index: Int, result: String): String = {
+      if (index >= bytes.length)
+        result
+      else
+        convert(bytes, index + 1, result + bytes(index).toChar)
+    }
+
+    val bytes = normalString.getBytes("UTF-8")
+    convert(bytes, 0, "")
+  }
+  
+  def byteStringToNormalString(byteString: String): String = {
+    @scala.annotation.tailrec
+    def convert(chars: List[Char], result: String): String = chars match {
+      case Nil => result
+      case head :: tail => convert(tail, result + head)
+    }
+
+    convert(byteString.toList, "")
+  }
   
   def residue(dividend: String, polinomio: String): String = {
     def auxBinaryModulo2(remainder: String, divisor: String): String = {
