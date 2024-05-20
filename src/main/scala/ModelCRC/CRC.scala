@@ -2,6 +2,20 @@ package ModelCRC
 
 class CRC extends ICRC{
 
+  private var timeMS: Long = 0
+  private var timeNS: Long = 0
+  
+  def calculateCRC(message:String): Unit = {
+    val messageByteString = normalStringToByteString(message)
+    val startMS = System.currentTimeMillis()
+    val startNS = System.nanoTime()
+    val polinomio = "1001"
+    val remainder = residue(message, polinomio)
+    val endNS = System.nanoTime()
+    val endMS = System.currentTimeMillis()
+    timeMS = endMS - startMS
+    timeNS = endNS - startNS
+  }
   def normalStringToByteString(normalString: String): String = {
     @scala.annotation.tailrec
     def convert(bytes: Array[Byte], index: Int, result: String): String = {
@@ -10,7 +24,6 @@ class CRC extends ICRC{
       else
         convert(bytes, index + 1, result + bytes(index).toChar)
     }
-
     val bytes = normalString.getBytes("UTF-8")
     convert(bytes, 0, "")
   }
@@ -55,5 +68,8 @@ class CRC extends ICRC{
     val newRemainder = residue(newMessage, polinomio)
     newMessage.dropRight(newRemainder.length)
   }
+
+  def getTimeMS(): Long = timeMS
+  def getTimeNS(): Long = timeNS
 
 }
