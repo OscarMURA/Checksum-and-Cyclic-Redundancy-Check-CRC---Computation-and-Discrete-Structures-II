@@ -48,35 +48,39 @@ object ReportTI {
       timeDualSum=timeDualSum/iterations
       timeDualSumNS=timeDualSumNS/iterations
       println((" File "+i))
+
       writer.println(s"$i,${data.length},$timeDualSum,$timeDualSumNS")
+      writer.flush()
     )
      println("Report created")
     writer.close()
   }
 
-   private def testReportCRC(dataType: DataType, amountData: Int,edc: TypeEDC): Unit = {
-    val writer=new PrintWriter(("Report/Report"+dataType.toString+edc.toString+".csv"))
+  private def testReportCRC(dataType: DataType, amountData: Int, edc: TypeEDC): Unit = {
+    val writer = new PrintWriter(("Report/Report" + dataType.toString + edc.toString + ".csv"))
     writer.println("Name,lenght,AverageCRCTimeMS,AverageCRCTimeNS")
-    val range=1 to amountData
-    range.foreach(i =>
-      val data=Reader.getDataString("Data/"+dataType.toString+"/"+i+".txt")
-      val range2= 1 to crc
-      var timeDualSum: Long = 0
-      var timeDualSumNS: Long = 0
-      range2.foreach(j =>
+    val range = 1 to amountData
+    var timeCRCMS: Long = 0
+    var timeCRCNS: Long = 0
+    range.foreach(i => {
+      timeCRCMS = 0
+      timeCRCNS = 0
+      val data = Reader.getDataString("Data/" + dataType.toString + "/" + i + ".txt")
+      val range2 = 1 to crc
+      range2.foreach(j => {
         val EDCvar = new CRC()
         EDCvar.calculateTime(data)
-        if(j>1){
-          timeDualSum+=EDCvar.getTimeMS()
-          timeDualSumNS+=EDCvar.getTimeNS()
+        if (j > 1) {
+          timeCRCMS += EDCvar.getTimeMS()
+          timeCRCNS += EDCvar.getTimeNS()
         }
-        //  println(("Iteration: "+j))
-      )
-      timeDualSum=timeDualSum/crc
-      timeDualSumNS=timeDualSumNS/crc
-      writer.println(s"$i,${data.length},$timeDualSum,$timeDualSumNS")
-      println((" File "+i))
-    )
+      })
+      val averageTimeMS = timeCRCMS / crc
+      val averageTimeNS = timeCRCNS / crc
+      writer.println(s"$i,${data.length},$averageTimeMS,$averageTimeNS")
+      writer.flush()
+      println("File " + i)
+    })
     writer.close()
   }
 

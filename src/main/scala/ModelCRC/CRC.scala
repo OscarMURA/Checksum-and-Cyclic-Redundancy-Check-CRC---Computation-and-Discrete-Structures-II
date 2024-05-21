@@ -5,12 +5,12 @@ class CRC extends ICRC{
 
   private var timeMS: Long = 0
   private var timeNS: Long = 0
-  
+
   def calculateTime(message:String): Unit = {
     val messageByteString = normalStringToByteString(message)
     val startMS = System.currentTimeMillis()
     val startNS = System.nanoTime()
-    val polinomio = "1001"
+    val polinomio = "1101111100000111"
     val remainder = residue(message, polinomio)
     val endNS = System.nanoTime()
     val endMS = System.currentTimeMillis()
@@ -28,7 +28,7 @@ class CRC extends ICRC{
     val bytes = normalString.getBytes("UTF-8")
     convert(bytes, 0, "")
   }
-  
+
   def byteStringToNormalString(byteString: String): String = {
     @scala.annotation.tailrec
     def convert(chars: List[Char], result: String): String = chars match {
@@ -38,7 +38,7 @@ class CRC extends ICRC{
 
     convert(byteString.toList, "")
   }
-  
+
   def residue(dividend: String, polinomio: String): String = {
     def auxBinaryModulo2(remainder: String, divisor: String): String = {
       if (remainder.length < polinomio.length) {
