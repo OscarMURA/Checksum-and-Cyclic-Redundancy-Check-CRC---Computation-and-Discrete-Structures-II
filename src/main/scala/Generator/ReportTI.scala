@@ -77,8 +77,28 @@ object ReportTI {
       writer.println(s"$i,${data.length},$timeDualSum,$timeDualSumNS")
       println((" File "+i))
     )
-
     writer.close()
   }
+
+   def testByFileCRC(name:String):Unit={
+     val writer = new PrintWriter(("Report/Report"+name+"-BIGCRC.csv"))
+     writer.println("Name,AverageMSCRC,AverageNSCRC,")
+     val data =Reader.getDataString(("Data/BIG/"+name+".txt"))
+     val range2 = 1 to crc
+     var timeDualSum: Long = 0
+     var timeDualSumNS: Long = 0
+     val EDCvar = new CRC()
+     EDCvar.calculateTime(data)
+     range2.foreach(j =>
+       EDCvar.calculateTime(data)
+       timeDualSum += EDCvar.getTimeMS()
+       timeDualSumNS += EDCvar.getTimeNS()
+       println(("Iteration: "+j))
+     )
+     timeDualSum = timeDualSum / crc
+     timeDualSumNS = timeDualSumNS / crc
+     writer.println(s"$name,${data.length},$timeDualSum,$timeDualSumNS")
+     println((" File " + name))
+   }
 
 }
