@@ -1,6 +1,6 @@
-package ModelCRC
+package Interface
 
-trait ICRC {
+trait ICRC{
 
   def residue(dividend: String, polinomio: String): String
 

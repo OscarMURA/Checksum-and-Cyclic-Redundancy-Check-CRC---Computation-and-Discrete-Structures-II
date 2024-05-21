@@ -1,11 +1,12 @@
 package ModelCRC
+import Interface.ICRC
 
 class CRC extends ICRC{
 
   private var timeMS: Long = 0
   private var timeNS: Long = 0
   
-  def calculateCRC(message:String): Unit = {
+  def calculateTime(message:String): Unit = {
     val messageByteString = normalStringToByteString(message)
     val startMS = System.currentTimeMillis()
     val startNS = System.nanoTime()
@@ -73,3 +74,6 @@ class CRC extends ICRC{
   def getTimeNS(): Long = timeNS
 
 }
+
+object CRC extends CRC
+

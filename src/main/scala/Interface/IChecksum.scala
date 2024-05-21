@@ -1,4 +1,4 @@
-package ModelCheckSum
+package Interface
 
 trait IChecksum {
 

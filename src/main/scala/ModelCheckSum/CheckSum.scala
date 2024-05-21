@@ -1,18 +1,18 @@
 package ModelCheckSum
 
 import scala.annotation.tailrec
-
+import Interface.*
 
 class CheckSum  extends IChecksum{
 
   private var timeMS: Long =0
   private var timeNS: Long = 0
-  def calculateCheckum(data: List[Byte]): Unit = {
-    val start = System.currentTimeMillis()
-    val startNS = System.nanoTime()
+  def calculateTime(data: List[Byte]): Unit = {
+    val start:Long = System.currentTimeMillis()
+    val startNS:Long = System.nanoTime()
     val checksum = singleMessageDoubleChecksum(data, 256, 8, 8)
-    val endNS = System.nanoTime()
-    val end = System.currentTimeMillis()
+    val endNS:Long = System.nanoTime()
+    val end:Long = System.currentTimeMillis()
     timeMS = end - start
     timeNS = endNS - startNS
   }
