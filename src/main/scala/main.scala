@@ -9,12 +9,12 @@ def main(): Unit = {
   //ReportTI.createUnitData(DataType.TOY, 25)
   //ReportTI.createUnitData(DataType.SMALL, 25)
   //ReportTI.createUnitData(DataType.MEDIUM, 20)
-  ReportTI.createUnitData(DataType.BIG, 20)
+  //ReportTI.createUnitData(DataType.BIG, 20)
 
   //ReportTI.testReportGeneric(DataType.TOY, 25, TypeEDC.DUAL_SUM)
   //ReportTI.testReportGeneric(DataType.SMALL, 25, TypeEDC.DUAL_SUM)
   //ReportTI.testReportGeneric(DataType.MEDIUM, 20, TypeEDC.DUAL_SUM)
-  //ReportTI.testReportGeneric(DataType.BIG, 20, TypeEDC.DUAL_SUM)
+  ReportTI.testReportGeneric(DataType.BIG, 20, TypeEDC.DUAL_SUM)
 
   //ReportTI.testReportGeneric(DataType.TOY, 25, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.SMALL, 25, TypeEDC.CRC)

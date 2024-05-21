@@ -56,7 +56,7 @@ object ReportTI {
 
    private def testReportCRC(dataType: DataType, amountData: Int,edc: TypeEDC): Unit = {
     val writer=new PrintWriter(("Report/Report"+dataType.toString+edc.toString+".csv"))
-    writer.println("Name,lenght,AverageDualSumTimeMS,AverageDualSumTimeNS")
+    writer.println("Name,lenght,AverageCRCTimeMS,AverageCRCTimeNS")
     val range=1 to amountData
     range.foreach(i =>
       val data=Reader.getDataString("Data/"+dataType.toString+"/"+i+".txt")
@@ -70,7 +70,7 @@ object ReportTI {
           timeDualSum+=EDCvar.getTimeMS()
           timeDualSumNS+=EDCvar.getTimeNS()
         }
-        //println(("Iteration: "+j))
+        //  println(("Iteration: "+j))
       )
       timeDualSum=timeDualSum/crc
       timeDualSumNS=timeDualSumNS/crc
