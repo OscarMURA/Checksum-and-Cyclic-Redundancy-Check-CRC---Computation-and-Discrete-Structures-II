@@ -20,7 +20,7 @@ def main(): Unit = {
   //ReportTI.testReportGeneric(DataType.SMALL, 25, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.MEDIUM, 20, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.BIG, 20, TypeEDC.CRC)
-
+  ReportTI.testByFileCRC("1")
   print("Archivo de datos  generado.  ")
   println("Proceso completado.")
 }
