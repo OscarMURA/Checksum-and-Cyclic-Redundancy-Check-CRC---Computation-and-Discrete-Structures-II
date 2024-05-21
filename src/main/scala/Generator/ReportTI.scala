@@ -99,6 +99,7 @@ object ReportTI {
      timeDualSumNS = timeDualSumNS / crc
      writer.println(s"$name,${data.length},$timeDualSum,$timeDualSumNS")
      println((" File " + name))
+     witer.close()
    }
 
 }
