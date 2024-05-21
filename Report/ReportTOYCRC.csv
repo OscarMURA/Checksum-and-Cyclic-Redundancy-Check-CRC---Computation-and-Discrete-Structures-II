@@ -1,4 +1,4 @@
-Name,lenght,AverageDualSumTimeMS,AverageDualSumTimeNS
+Name,lenght,AverageCRCTimeMS,AverageCRCTimeNS
 1,1,0,4032
 2,4,0,7316
 3,8,0,7292
