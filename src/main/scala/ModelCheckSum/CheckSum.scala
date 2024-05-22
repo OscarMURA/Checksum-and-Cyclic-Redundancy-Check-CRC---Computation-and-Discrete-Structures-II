@@ -17,11 +17,10 @@ class CheckSum  extends IChecksum{
     timeNS = endNS - startNS
   }
 
-  def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockjSize: Int): Byte = {
-    //if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
-    //if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
-    //if(blockSize>message.length)throw new IllegalArgumentException("Block Size Partition must be less than the message lenght")
-    val dataBlocks = createBlocks(message, blockjSize)
+  def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
+    if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
+    if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
+    val dataBlocks = createBlocks(message, blockSize)
     @tailrec
     def singleMessageBlockCheckSum(dataBlocks: List[List[Byte]], modulus: Int, k: Int, sumA: Byte, sumB: Byte): Byte = {
 

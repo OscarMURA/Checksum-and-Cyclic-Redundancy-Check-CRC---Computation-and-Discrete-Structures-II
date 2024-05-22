@@ -17,7 +17,7 @@ def main(): Unit = {
   //ReportTI.testReportGeneric(DataType.BIG, 20, TypeEDC.DUAL_SUM)
 
   ReportTI.testReportGeneric(DataType.TOY, 25, TypeEDC.CRC)
-  ReportTI.testReportGeneric(DataType.SMALL, 25, TypeEDC.CRC)
+  //ReportTI.testReportGeneric(DataType.SMALL, 25, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.MEDIUM, 20, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.BIG, 20, TypeEDC.CRC)
   //ReportTI.testByFileCRC("1")
