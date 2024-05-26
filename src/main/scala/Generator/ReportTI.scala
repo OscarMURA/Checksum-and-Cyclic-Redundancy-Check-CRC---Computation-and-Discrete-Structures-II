@@ -10,7 +10,7 @@ import Interface.EDC
 object ReportTI {
 
   private var iterations: Int = 25
-  private var crc: Int = 15
+  private var crc: Int = 10
 
   def createUnitData(dataType: DataType, amount: Int): Unit={
     def sizeOfInterval(min: Int, max: Int, amount: Int): List[Int] = {

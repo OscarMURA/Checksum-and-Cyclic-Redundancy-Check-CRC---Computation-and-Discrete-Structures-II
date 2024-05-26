@@ -35,7 +35,6 @@ class CRC extends ICRC{
       case Nil => result
       case head :: tail => convert(tail, result + head)
     }
-
     convert(byteString.toList, "")
   }
 
