@@ -59,7 +59,7 @@ object ReportTI {
   private def testReportCRC(dataType: DataType, amountData: Int, edc: TypeEDC): Unit = {
     val writer = new PrintWriter(("Report/Report" + dataType.toString + edc.toString + ".csv"))
     writer.println("Name,BitsAmount,AverageCRCTimeMS,AverageCRCTimeNS")
-    val range = 0 to amountData
+    val range = 1 to amountData
     var timeCRCMS: Long = 0
     var timeCRCNS: Long = 0
     range.foreach(i => {
