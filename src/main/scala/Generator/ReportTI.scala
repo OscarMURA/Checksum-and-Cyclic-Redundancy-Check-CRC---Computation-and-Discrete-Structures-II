@@ -29,17 +29,17 @@ object ReportTI {
 
    private def  testReportCheckSum(dataType: DataType, amountData: Int,edc: TypeEDC): Unit = {
     val writer=new PrintWriter(("Report/Report"+dataType.toString+edc.toString+".csv"))
-    writer.println("Name,BytesAmount,AverageDualSumTimeMS,AverageDualSumTimeNS")
+    writer.println("Name,BitsAmount,AverageDualSumTimeMS,AverageDualSumTimeNS")
     val range=1 to amountData
     range.foreach(i =>
       val data=Reader.getDataByte("Data/"+dataType.toString+"/"+i+".txt")
-      val range2= 1 to iterations
+      val range2= 0 to iterations
       var timeDualSum: Long = 0
       var timeDualSumNS: Long = 0
       range2.foreach(j =>
         val EDCvar = new CheckSum()
         EDCvar.calculateTime(data)
-        if(j>1){
+        if(j>0){
           timeDualSum+=EDCvar.getTimeMS()
           timeDualSumNS+=EDCvar.getTimeNS()
         }
@@ -49,7 +49,7 @@ object ReportTI {
       timeDualSumNS=timeDualSumNS/iterations
       println((" File "+i))
 
-      writer.println(s"$i,${data.length},$timeDualSum,$timeDualSumNS")
+      writer.println(s"$i,${data.length*8},$timeDualSum,$timeDualSumNS")
       writer.flush()
     )
      println("Report created")
@@ -58,26 +58,26 @@ object ReportTI {
 
   private def testReportCRC(dataType: DataType, amountData: Int, edc: TypeEDC): Unit = {
     val writer = new PrintWriter(("Report/Report" + dataType.toString + edc.toString + ".csv"))
-    writer.println("Name,lenght,AverageCRCTimeMS,AverageCRCTimeNS")
-    val range = 1 to amountData
+    writer.println("Name,BitsAmount,AverageCRCTimeMS,AverageCRCTimeNS")
+    val range = 0 to amountData
     var timeCRCMS: Long = 0
     var timeCRCNS: Long = 0
     range.foreach(i => {
       timeCRCMS = 0
       timeCRCNS = 0
       val data = Reader.getDataString("Data/" + dataType.toString + "/" + i + ".txt")
-      val range2 = 1 to crc
+      val range2 = 0 to crc
       range2.foreach(j => {
         val EDCvar = new CRC()
         EDCvar.calculateTime(data)
-        if (j > 1) {
+        if (j > 0) {
           timeCRCMS += EDCvar.getTimeMS()
           timeCRCNS += EDCvar.getTimeNS()
         }
       })
       val averageTimeMS = timeCRCMS / crc
       val averageTimeNS = timeCRCNS / crc
-      writer.println(s"$i,${data.length},$averageTimeMS,$averageTimeNS")
+      writer.println(s"$i,${data.length*8},$averageTimeMS,$averageTimeNS")
       writer.flush()
       println("File " + i)
     })
@@ -86,9 +86,9 @@ object ReportTI {
 
    def testByFileCRC(name:String):Unit={
      val writer = new PrintWriter(("Report/Report"+name+"-BIGCRC.csv"))
-     writer.println("Name,AverageMSCRC,AverageNSCRC,")
+     writer.println("Name,BitsAmount,AverageMSCRC,AverageNSCRC,")
      val data =Reader.getDataString(("Data/BIG/"+name+".txt"))
-     val range2 = 1 to crc
+     val range2 = 0 to crc
      var timeDualSum: Long = 0
      var timeDualSumNS: Long = 0
      val EDCvar = new CRC()
@@ -101,7 +101,7 @@ object ReportTI {
      )
      timeDualSum = timeDualSum / crc
      timeDualSumNS = timeDualSumNS / crc
-     writer.println(s"$name,${data.length},$timeDualSum,$timeDualSumNS")
+     writer.println(s"$name,${data.length*8},$timeDualSum,$timeDualSumNS")
      println((" File " + name))
      writer.close()
    }

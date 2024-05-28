@@ -7,6 +7,7 @@ class CheckSum  extends IChecksum{
 
   private var timeMS: Long =0
   private var timeNS: Long = 0
+  
   def calculateTime(data: List[Byte]): Unit = {
     val start:Long = System.currentTimeMillis()
     val startNS:Long = System.nanoTime()
@@ -21,6 +22,7 @@ class CheckSum  extends IChecksum{
     if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
     if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
     val dataBlocks = createBlocks(message, blockSize)
+    
     @tailrec
     def singleMessageBlockCheckSum(dataBlocks: List[List[Byte]], modulus: Int, k: Int, sumA: Byte, sumB: Byte): Byte = {
 
@@ -36,8 +38,6 @@ class CheckSum  extends IChecksum{
             val tempSumB = (tempSumA + sumB) % modulus
             singleMessageBlockCheckSum(tail, modulus, k, tempSumA.toByte, tempSumB.toByte)
           }
-
-
       }
     }
     singleMessageBlockCheckSum(dataBlocks, modulus, k, 0, 0)
