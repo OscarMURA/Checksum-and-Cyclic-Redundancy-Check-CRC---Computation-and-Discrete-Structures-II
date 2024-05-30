@@ -10,8 +10,8 @@ class CheckSum  extends IChecksum{
   private var timeStarMS: Long=0
   private var timeEndMS: Long=0
 
-  def calculateTime(data: List[Byte]): Unit = {
-    val checksum = singleMessageDoubleChecksum(data, 256, 8, 8)
+  def calculateTime(data: List[Byte],k:Int): Unit = {
+    val checksum = singleMessageDoubleChecksum(data, 256, k, k)
     timeEndNS = System.nanoTime()
     timeEndMS = System.currentTimeMillis()
   }

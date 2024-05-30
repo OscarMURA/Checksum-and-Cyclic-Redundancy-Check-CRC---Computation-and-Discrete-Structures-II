@@ -22,13 +22,13 @@ object ReportTI {
     })
   }
 
-  def testReportGeneric(dataType: DataType, amountData: Int,edc: TypeEDC): Unit={
+  def testReportGeneric(dataType: DataType, amountData: Int,edc: TypeEDC,k:Int): Unit={
     if(edc==TypeEDC.CRC) testReportCRC(dataType, amountData, edc)
-    else testReportCheckSum(dataType, amountData,edc)
+    else testReportCheckSum(dataType, amountData,edc,k)
   }
 
-   private def  testReportCheckSum(dataType: DataType, amountData: Int,edc: TypeEDC): Unit = {
-    val writer=new PrintWriter(("Report/Report"+dataType.toString+edc.toString+".csv"))
+   private def  testReportCheckSum(dataType: DataType, amountData: Int,edc: TypeEDC,k:Int): Unit = {
+    val writer=new PrintWriter(("Report/Report"+dataType.toString+edc.toString+"_"+k+".csv"))
     writer.println("Name,BitsAmount,AverageDualSumTimeMS,AverageDualSumTimeNS")
     val range=1 to amountData
     range.foreach(i =>
@@ -38,7 +38,7 @@ object ReportTI {
       var timeDualSumNS: Long = 0
       range2.foreach(j =>
         val EDCvar = new CheckSum()
-        EDCvar.calculateTime(data)
+        EDCvar.calculateTime(data,k)
         if(j>0){
           timeDualSum+=EDCvar.getTimeMS()
           timeDualSumNS+=EDCvar.getTimeNS()
