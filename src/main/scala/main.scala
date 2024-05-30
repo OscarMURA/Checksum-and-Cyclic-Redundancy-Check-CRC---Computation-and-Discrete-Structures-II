@@ -33,6 +33,11 @@ def main(): Unit = {
   //ReportTI.testReportGeneric(DataType.MEDIUM, 40, TypeEDC.DUAL_SUM,32)
   //ReportTI.testReportGeneric(DataType.BIG, 40, TypeEDC.DUAL_SUM,32)
 
+  //ReportTI.testReportGeneric(DataType.TOY, 20, TypeEDC.DUAL_SUM,64)
+  //ReportTI.testReportGeneric(DataType.SMALL, 20, TypeEDC.DUAL_SUM,64)
+  //ReportTI.testReportGeneric(DataType.MEDIUM, 40, TypeEDC.DUAL_SUM,64)
+  ReportTI.testReportGeneric(DataType.BIG, 40, TypeEDC.DUAL_SUM,64)
+
   print("Archivo de datos  generado.  ")
   println("Proceso completado.")
 }
