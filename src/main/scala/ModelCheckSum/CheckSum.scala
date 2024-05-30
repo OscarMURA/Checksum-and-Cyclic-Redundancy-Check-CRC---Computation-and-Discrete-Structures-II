@@ -12,7 +12,7 @@ class CheckSum  extends IChecksum{
   private var timeEndMS: Long=0
 
   def calculateTime(data: List[Byte],k:Int): Unit = {
-    val modulus = pow(2,8).toInt -1
+    val modulus = pow(2,k).toInt -1
     val checksum = singleMessageDoubleChecksum(data, modulus, k, k)
     timeEndNS = System.nanoTime()
     timeEndMS = System.currentTimeMillis()
