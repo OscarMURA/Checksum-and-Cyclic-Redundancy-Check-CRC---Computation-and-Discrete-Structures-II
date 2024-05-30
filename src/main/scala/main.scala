@@ -13,13 +13,13 @@ def main(): Unit = {
 
   //ReportTI.testReportGeneric(DataType.TOY, 20, TypeEDC.DUAL_SUM)
   //ReportTI.testReportGeneric(DataType.SMALL, 20, TypeEDC.DUAL_SUM)
-  ReportTI.testReportGeneric(DataType.TOY, 20, TypeEDC.CRC)
+  //ReportTI.testReportGeneric(DataType.TOY, 20, TypeEDC.CRC)
   //ReportTI.testReportGeneric(DataType.SMALL, 20, TypeEDC.CRC)
 
   //ReportTI.testReportGeneric(DataType.MEDIUM, 40, TypeEDC.DUAL_SUM)
   //ReportTI.testReportGeneric(DataType.MEDIUM, 40, TypeEDC.CRC)
 
-  //ReportTI.testReportGeneric(DataType.BIG, 40, TypeEDC.DUAL_SUM)
+  ReportTI.testReportGeneric(DataType.BIG, 40, TypeEDC.DUAL_SUM)
   //ReportTI.testReportGeneric(DataType.BIG, 40, TypeEDC.CRC)
 
   print("Archivo de datos  generado.  ")

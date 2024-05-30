@@ -5,24 +5,23 @@ import Interface.*
 
 class CheckSum  extends IChecksum{
 
-  private var timeMS: Long =0
-  private var timeNS: Long = 0
-  
+  private var timeStarNS: Long=0
+  private var timeEndNS: Long=0
+  private var timeStarMS: Long=0
+  private var timeEndMS: Long=0
+
   def calculateTime(data: List[Byte]): Unit = {
-    val start:Long = System.currentTimeMillis()
-    val startNS:Long = System.nanoTime()
     val checksum = singleMessageDoubleChecksum(data, 256, 8, 8)
-    val endNS:Long = System.nanoTime()
-    val end:Long = System.currentTimeMillis()
-    timeMS = end - start
-    timeNS = endNS - startNS
+    timeEndNS = System.nanoTime()
+    timeEndMS = System.currentTimeMillis()
   }
 
   def singleMessageDoubleChecksum(message: List[Byte], modulus: Int, k: Int, blockSize: Int): Byte = {
     if (modulus <= 0) throw new IllegalArgumentException("Modulus must be a positive integer")
     if (blockSize <= 0) throw new IllegalArgumentException("Block size must be a positive integer")
     val dataBlocks = createBlocks(message, blockSize)
-    
+    timeStarMS = System.currentTimeMillis()
+    timeStarNS = System.nanoTime()
     @tailrec
     def singleMessageBlockCheckSum(dataBlocks: List[List[Byte]], modulus: Int, k: Int, sumA: Byte, sumB: Byte): Byte = {
 
@@ -62,7 +61,7 @@ class CheckSum  extends IChecksum{
     group(data, blockSize, Nil)
   }
 
-  def getTimeMS(): Long = timeMS
-  def getTimeNS(): Long = timeNS
+  def getTimeMS(): Long = timeEndMS - timeStarMS
+  def getTimeNS(): Long = timeEndNS - timeStarNS
 
 }
