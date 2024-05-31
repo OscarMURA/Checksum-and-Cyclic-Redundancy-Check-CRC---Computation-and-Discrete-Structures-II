@@ -1,5 +1,4 @@
 Name,BitsAmount,AverageDualSumTimeMS,AverageDualSumTimeNS
-1,10000,0,151500
 2,34744,0,108508
 3,59496,0,105328
 4,84248,0,111760
