@@ -368,7 +368,7 @@ val expectedOutput: String = "0"
 
 #### XOR lenght one, mixed imputs
 
-This test verifies the correctness of the XOR algorithm in a case of length 1 inputs. Both xor (message1, message2 and message2, message1)
+This test verifies the correctness of the XOR algorithm in a case of length 1 input. Both xor (message1, message2 and message2, message1)
 
 **Input**
 ```scala  
@@ -497,3 +497,47 @@ val expectedOutput: String = "1110010101"
 
 ```  
 ---
+
+
+#### normalStringToByteString and byteStringToNormalString with regular string
+
+This test case checks whether the normalStringToByteString and byteStringToNormalString functions properly handle a regular string.
+
+**Input**
+```scala  
+val originalString = "Hello, World!"
+```  
+**Output**
+```scala  
+val expectedOutput: String = "Hello, World!"
+```  
+---
+
+#### normalStringToByteString and byteStringToNormalString with empty string
+
+This test case checks whether the normalStringToByteString and byteStringToNormalString functions properly handle an empty string.
+
+**Input**
+```scala  
+val originalString = ""
+```  
+**Output**
+```scala  
+val expectedOutput: String = ""
+```  
+---
+
+#### normalStringToByteString and byteStringToNormalString with long string
+
+This test case checks whether the normalStringToByteString and byteStringToNormalString functions properly handle a long string.
+
+**Input**
+```scala  
+val originalString = "a" x 1000
+```  
+**Output**
+```scala  
+val expectedOutput: String = "a" x 1000
+```  
+---
+

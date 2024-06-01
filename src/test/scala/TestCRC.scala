@@ -157,4 +157,25 @@ class TestCRC extends FunSuite {
     assertEquals(result3, false)
   }
 
+  test("normalStringToByteString and byteStringToNormalString with regular string") {
+    val originalString = "Hello, World!"
+    val byteString = CRC().normalStringToByteString(originalString)
+    val resultString = CRC().byteStringToNormalString(byteString)
+    assertEquals(resultString, originalString)
+  }
+
+  test("normalStringToByteString and byteStringToNormalString with empty string") {
+    val originalString = ""
+    val byteString = CRC().normalStringToByteString(originalString)
+    val resultString = CRC().byteStringToNormalString(byteString)
+    assertEquals(resultString, originalString)
+  }
+
+  test("normalStringToByteString and byteStringToNormalString with long string") {
+    val originalString = "a" * 1000
+    val byteString = CRC().normalStringToByteString(originalString)
+    val resultString = CRC().byteStringToNormalString(byteString)
+    assertEquals(resultString, originalString)
+  }
+
 }
