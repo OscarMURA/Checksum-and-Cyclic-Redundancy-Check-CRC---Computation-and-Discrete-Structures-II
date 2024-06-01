@@ -1,5 +1,7 @@
 
-# Test Design
+# Test Design CRC
+
+In this case, the performance of the CRC algorithm was evaluated by testing through binary number strings. In the data loading, the volume of data was evaluated by means of large texts.
   
 ---
 
